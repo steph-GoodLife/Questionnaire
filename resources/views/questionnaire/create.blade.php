@@ -13,14 +13,23 @@
                         @csrf
                         <div class="form-group">
                             <label for=title">Titre</label>
-                            <input name="title" type="text" class="form-control" id=title" aria-describedby="titleHelp" placeholder="Entrer un Titre">
+                            <input name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Entrer un Titre">
                             <small id="titleHelp" class="form-text text-muted">Donnez à votre questionnaire un titre qui attire l'attention.</small>
+                            @error('title')
+                        <small class="text-danger">{{ $message}}</small>
+                            @enderror
+
                           </div>
 
                           <div class="form-group">
-                            <label for=purpose">L'objet</label>
-                            <input name="purpose" type="text" class="form-control" id=purpose" aria-describedby="purposeHelp" placeholder="Entrer un objet">
+                            <label for="purpose">L'objet</label>
+                            <input name="purpose" type="text" class="form-control" id="purpose" aria-describedby="purposeHelp" placeholder="Entrer un objet">
                             <small id="purposeHelp" class="form-text text-muted">donner un l'objet a la question.</small>
+
+                            @error('purpose')
+                            <small class="text-danger">{{ $message}}</small>
+                                @enderror
+
                           </div>
                           <button type="submit" class="btn btn-primary">Creation Question</button>
 
