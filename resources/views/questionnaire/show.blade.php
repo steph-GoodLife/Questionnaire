@@ -9,6 +9,8 @@
 
                 <div class="card-body">
 
+                <a class="btn btn-info" href="/questionnaires/{{$questionnaire->id}}/questions/create"> Rajouter Nouvelle Question</a>
+
 
                 </div>
             </div>
