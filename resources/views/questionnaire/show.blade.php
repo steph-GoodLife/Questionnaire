@@ -5,15 +5,30 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">{{$questionnaire->title}}</div>
+                <div class="card-header">{{$questionnaire->title}}</div>
 
                 <div class="card-body">
 
-                <a class="btn btn-info" href="/questionnaires/{{$questionnaire->id}}/questions/create"> Rajouter Nouvelle Question</a>
-
+                    <a class="btn btn-info" href="/questionnaires/{{$questionnaire->id}}/questions/create"> Rajouter Nouvelle Question</a>
+             <a class="btn btn-info" href="/surveys/{{$questionnaire->id}}-{{Str::slug($questionnaire->title)}}">répondre à l'enquête</a>
 
                 </div>
             </div>
+            @foreach($questionnaire->questions as $question)
+
+            <div class="card mt-4">
+                <div class="card-header">{{$question->question}}</div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach($question->answers as $answer)
+                        <li class="list-group-item">{{$answer->answer}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
