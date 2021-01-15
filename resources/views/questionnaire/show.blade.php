@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$questionnaire->title}}</div>
+                <div class="card-header">{{$questionnaire->titre}}</div>
 
                 <div class="card-body">
 
-                    <a class="btn btn-info" href="/questionnaires/{{$questionnaire->id}}/questions/create"> Rajouter
+                    <a class="btn btn-info" href="/questionnaires/{{$questionnaire->idquestionnaire}}/questions/create"> Rajouter
                         Nouvelle Question</a>
                     <a class="btn btn-info"
-                        href="/surveys/{{$questionnaire->id}}-{{Str::slug($questionnaire->title)}}">répondre à
+                        href="/surveys/{{$questionnaire->idquestionnaire}}-{{Str::slug($questionnaire->titre)}}">répondre à
                         l'enquête</a>
 
                 </div>
@@ -26,7 +26,7 @@
                     <ul class="list-group">
                         @foreach($question->answers as $answer)
                         <li class="list-group-item d-flex justify-content-between">
-                              <div>{{$answer->answer}}</div>
+                              <div>{{$answer->reponse}}</div>
                             @if($question->responses->count())
                              <div>{{intval(($answer->responses->count()* 100)/$question->responses->count())}}%</div>
                             @endif
@@ -38,10 +38,10 @@
 
 
                 <div class="card-footer">
-                    <form action="/questionnaires/{{$questionnaire->id}}/questions/{{$question->id}}" method="post">
+                    <form action="/questionnaires/{{$questionnaire->idquestionnaire}}/questions/{{$question->idquestion}}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete Question</button>
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Supprimer la question</button>
                     </form>
                 </div>
             </div>

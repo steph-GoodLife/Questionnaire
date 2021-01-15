@@ -4,19 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class Enquete extends Model
 {
    protected $guarded=[];
 
+   protected $primaryKey = 'idenquete';
+
+   protected $table = 'enquete';
+
+   public $timestamps = false;
+
+
+
    public function  questionnaire()
    {
-      
+
           return $this->belongsTo(Questionnaire::class);
    }
 
    public function responses()
    {
-    
-           return $this->hasMany(SurveyResponse::class);
+
+           return $this->hasMany(ReponseEnquete::class);
    }
 }

@@ -4,9 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class Reponse extends Model
 {
     protected $guarded = [];
+
+    protected $table = 'reponse';
+
+    public $timestamps = false;
+
+    protected $primaryKey = 'idreponse';
+
+
 
 
     public function question()
@@ -15,11 +23,12 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
+
      public function responses()
      {
 
-         return $this->hasMany(SurveyResponse::class);
-           
+         return $this->hasMany(ReponseEnquete::class);
+
      }
 
 }

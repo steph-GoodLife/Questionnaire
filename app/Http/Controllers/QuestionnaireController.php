@@ -22,14 +22,14 @@ class QuestionnaireController extends Controller
 
         $data = request()->validate([
 
-                 'title'=>'required',
-                 'purpose'=>'required',
+                 'titre'=>'required',
+                 'proposition'=>'required',
         ]);
 
 
        $questionnaire =auth()->user()->questionnaires()->create($data);
 
-          return redirect('/questionnaires/'.$questionnaire->id);
+          return redirect('/questionnaires/'.$questionnaire->idquestionnaire);
 }
 
 
@@ -37,8 +37,8 @@ class QuestionnaireController extends Controller
  {
      $questionnaire->load('questions.answers.responses');
 
-    // dd($questionnaire);
-     
+    //dd($questionnaire);
+
     return view('questionnaire.show', compact('questionnaire'));
  }
 

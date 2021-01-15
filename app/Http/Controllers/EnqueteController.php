@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Questionnaire;
 
 
-class SurveyController extends Controller
+class EnqueteController extends Controller
 {
     public function show(Questionnaire $questionnaire, $slug)
     {
@@ -18,21 +18,21 @@ class SurveyController extends Controller
 
     {
                 // dd(request()->all());
-                 
+
          $data=request()->validate([
-             
-                   'responses.*.answer_id'=>'required',
-                   'responses.*.question_id' => 'required',
-                   'survey.name'=>'required',
-                   'survey.email'=>'required|email',
+
+                   'reponse.*.reponse_idreponse'=>'required',
+                   'reponse.*.question_idquestion' => 'required',
+                   'enquete.nom'=>'required',
+                   'enquete.email'=>'required|email',
           ]);
 
-                    $survey=$questionnaire->surveys()->create($data['survey']);
-                    $survey->responses()->createMany($data['responses']);
+                    $survey=$questionnaire->surveys()->create($data['enquete']);
+                    $survey->responses()->createMany($data['reponse']);
 
 
                      return view('survey.merci');
-                      
+
     }
 
     public function merci(){

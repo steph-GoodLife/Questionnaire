@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+use App\Reponse;
 use App\Question;
 use App\Questionnaire;
 
@@ -13,7 +13,7 @@ class QuestionController extends Controller
      public function create(Questionnaire $questionnaire)
      {
           return view('question.create', compact('questionnaire'));
-            
+
      }
 
 
@@ -22,13 +22,13 @@ class QuestionController extends Controller
 
          $data =request()->validate([
              'question.question'=>'required',
-             'answers.*.answer'=>'required',
+             'reponse.*.reponse'=>'required',
          ]);
-            
-        $question =$questionnaire->questions()->create($data['question']);
-        $question->answers()->createMany($data['answers']);
 
-        return redirect('/questionnaires/'.$questionnaire->id);
+        $question =$questionnaire->questions()->create($data['question']);
+        $question->answers()->createMany($data['reponse']);
+
+        return redirect('/questionnaires/'.$questionnaire->idquestionnaire);
 
      }
 
@@ -38,7 +38,7 @@ class QuestionController extends Controller
              $question->answers()->delete();
 
              $question->delete();
-              
+
              return redirect($questionnaire->path());
 
       }

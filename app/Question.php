@@ -8,6 +8,12 @@ class Question extends Model
 {
   protected $guarded = [];
 
+  protected $table = 'question';
+
+  protected $primaryKey = 'idquestion';
+
+  public $timestamps = false;
+
     public function questionnaire(){
 
         return $this->belongsTo(Questionnaire::class);
@@ -16,12 +22,12 @@ class Question extends Model
     public function answers()
     {
 
-           return $this->hasMany(Answer::class);
+           return $this->hasMany(Reponse::class);
     }
 
     public function responses()
     {
-        return $this->hasMany(SurveyResponse::class);
+        return $this->hasMany(ReponseEnquete::class);
 
     }
 }

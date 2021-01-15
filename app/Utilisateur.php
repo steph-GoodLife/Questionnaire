@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Utilisateur extends Authenticatable
 {
     use Notifiable;
 
@@ -16,8 +16,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nom', 'email', 'password', 
     ];
+
+    protected $table = 'utilisateur';
+
+    protected $primaryKey = 'idutilisateur';
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,4 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(Questionnaire::class);
 
     }
+
+
+    public function linscription()
+    {
+        return $this->hasOne(Linscription::class);
+    }
+
 }

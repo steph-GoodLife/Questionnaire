@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    <form action="/questionnaires/{{$questionnaire->id}}/questions" method="post">
+                    <form action="/questionnaires/{{$questionnaire->idquestionnaire}}/questions" method="post">
 
                         @csrf
 
@@ -36,11 +36,11 @@
                                 <div>
 
                                     <div class="form-group">
-                                        <label for="answers1">Choix 1</label>
-                                        <input name="answers[][answer]" type="text" value="{{old('answers.0.answer')}}"
+                                        <label for="reponse1">Choix 1</label>
+                                        <input name="reponse[][reponse]" type="text" value="{{old('reponse.0.reponse')}}"
                                             class="form-control" id="answers1" aria-describedby="choiceHelp"
                                             placeholder="Entrer Choix 1">
-                                        @error('answers.0.answer')
+                                        @error('reponse.0.reponse')
                                         <small class="text-danger">{{ $message}}</small>
                                         @enderror
 
@@ -50,11 +50,11 @@
                                 <div>
 
                                     <div class="form-group">
-                                        <label for="answers2">Choix 2</label>
-                                        <input name="answers[][answer]" type="text" value="{{old('answers.1.answer')}}"
-                                            class="form-control" id="answers2" aria-describedby="choiceHelp"
+                                        <label for="reponse2">Choix 2</label>
+                                        <input name="reponse[][reponse]" type="text" value="{{old('reponse.1.reponse')}}"
+                                            class="form-control" id="reponse2" aria-describedby="choiceHelp"
                                             placeholder="Entrer Choix 2">
-                                        @error('answers.1.answer')
+                                        @error('reponse.1.reponse')
                                         <small class="text-danger">{{ $message}}</small>
                                         @enderror
 
@@ -64,11 +64,11 @@
                                 <div>
 
                                     <div class="form-group">
-                                        <label for="answers3">Choix 3</label>
-                                        <input name="answers[][answer]" type="text" value="{{old('answers.2.answer')}}"
-                                            class="form-control" id="answers3" aria-describedby="choiceHelp"
+                                        <label for="reponse3">Choix 3</label>
+                                        <input name="reponse[][reponse]" type="text" value="{{old('reponse.2.reponse')}}"
+                                            class="form-control" id="reponse3" aria-describedby="choiceHelp"
                                             placeholder="Entrer Choix 3">
-                                        @error('answers.2.answer')
+                                        @error('reponse.2.reponse')
                                         <small class="text-danger">{{ $message}}</small>
                                         @enderror
 
@@ -78,11 +78,11 @@
                                 <div>
 
                                     <div class="form-group">
-                                        <label for="answers4">Choix 4</label>
-                                        <input name="answers[][answer]" type="text" value="{{old('answers.3.answer')}}"
-                                            class="form-control" id="answers4" aria-describedby="choiceHelp"
+                                        <label for="reponse">Choix 4</label>
+                                        <input name="reponse[][reponse]" type="text" value="{{old('reponse.3.reponse')}}"
+                                            class="form-control" id="reponse4" aria-describedby="choiceHelp"
                                             placeholder="Entrer Choix 4">
-                                        @error('answers.3.answer')
+                                        @error('reponse.3.reponse')
                                         <small class="text-danger">{{ $message}}</small>
                                         @enderror
 

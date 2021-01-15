@@ -14,7 +14,7 @@
                     </div>
                     @endif
 
-                    <a href="/questionnaires/create" class="btn btn-info">Creation Nouveau questionnaire</a>
+                    <a href="questionnaires/create" class="btn btn-info">Creation Nouveau questionnaire</a>
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
                     @foreach ($questionnaires as $questionnaire)
                     <li class="list-group-item">
 
-                        <a href="{{$questionnaire->path()}}">{{$questionnaire->title}}</a>
+                        <a href="{{$questionnaire->path()}}">{{$questionnaire->titre}}</a>
                         <div class="mt-2">
                             <small class="font-weight-bold">Share URL</small>
                             <p>

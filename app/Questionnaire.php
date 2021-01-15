@@ -9,18 +9,25 @@ class Questionnaire extends Model
 {
      protected $guarded =[];
 
+     protected $table = 'questionnaire';
+
+     public $timestamps = false;
+
+     protected $primaryKey = 'idquestionnaire';
+
+
 
      public function path()
      {
 
-     return url ('/questionnaires/'.$this->id);
+     return url ('/questionnaires/'.$this->idquestionnaire);
 
      }
 
      public function publicPath()
      {
 
-     return url('/surveys/' .$this->id. '-'. Str::slug($this->title));
+     return url('/surveys/' .$this->idquestionnaire. '-'. Str::slug($this->titre));
 
      }
 
@@ -28,20 +35,27 @@ class Questionnaire extends Model
      public function user()
      {
 
-          return $this->belongsTo(User::class);
+          return $this->belongsTo(Utilisateur::class);
 
 
      }
-     
+
      public function questions(){
-      
+
          return $this->hasMany(Question::class);
      }
 
 
         public function surveys()
         {
-              return $this->hasMany(Survey::class);
+              return $this->hasMany(Enquete::class);
 
         }
+
+
+        public function reponseEnquete()
+   {
+      return $this->hasMany(ReponseEnquete::class);
+
+   }
 }
