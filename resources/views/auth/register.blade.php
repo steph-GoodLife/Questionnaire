@@ -26,6 +26,35 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="prenom" class="col-md-4 col-form-label text-md-right">{{ __('Prenom') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
+
+                                @error('prenom')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-6">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    
+                                    <input type="radio" class="btn-check" name="professeur" id="professeur" autocomplete="off" >
+                                    <label class="btn btn-outline-primary" for="professeur">Professeur</label>
+
+                                    <input type="radio" class="btn-check" name="eleve" id="eleve" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="eleve">Eleve</label>
+
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Linscription;
+use App\Professeur;
+use App\Eleve;
 use App\Providers\RouteServiceProvider;
 use App\Utilisateur;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+
 
 class RegisterController extends Controller
 {
@@ -52,6 +55,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nom' => ['required', 'string', 'max:255'],
+            'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:utilisateur'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -62,14 +66,34 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Utilisateur
+     * @return \App\Professeur
+     * @return \App\Eleve
      */
     protected function create(array $data)
     {
-        return Utilisateur::create([
+        $user = Utilisateur::create([
             'nom' => $data['nom'],
+            'prenom' => $data['prenom'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+        $user->save();
+
+        if(isset($data['professeur'])){
+            $roleProf = new Professeur($data);
+            $user->professeur()->save($roleProf);
+        }elseif(isset($data['eleve'])){
+            $roleEleve = new Eleve($data);
+            $user->eleve()->save($roleEleve);
+        }
+
+
+       return $user;
+
+
+
 
     }
 

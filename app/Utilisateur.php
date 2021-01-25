@@ -16,7 +16,7 @@ class Utilisateur extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'email', 'password', 
+        'nom', 'prenom', 'email', 'password',
     ];
 
     protected $table = 'utilisateur';
@@ -54,6 +54,17 @@ class Utilisateur extends Authenticatable
     public function linscription()
     {
         return $this->hasOne(Linscription::class);
+    }
+
+
+    public function professeur()
+    {
+        return $this->hasOne(Professeur::class);
+    }
+
+    public function eleve()
+    {
+        return $this->hasOne(Eleve::class);
     }
 
 }
